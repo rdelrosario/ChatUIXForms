@@ -12,11 +12,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-        <Entry x:Name="chatTextInput" 
+        <controls:ExtendedEditorControl x:Name="chatTextInput" 
                  Text="{Binding TextToSend}" 
                  Margin="1"  
                  TextColor="Black" 
                  Keyboard="Chat"  
+                 IsExpandable="true"
                  HorizontalOptions="FillAndExpand" 
                  PlaceholderColor="LightGray"
                  Placeholder="Type your message here"

@@ -15,14 +15,13 @@ namespace ChatUIXForms.ViewModels
 
         public ChatPageViewModel()
         {
-            Messages.Add(new Message() { Text = "Hi" });
-            Messages.Add(new Message() { Text = "How are you?"});
+            Messages.Insert(0,new Message() { Text = "Hi" });
+            Messages.Insert(0, new Message() { Text = "How are you?"});
 
             OnSendCommand = new Command(() =>
             {
-                if(!string.IsNullOrEmpty(TextToSend))
-                {
-                    Messages.Add(new Message() { Text = TextToSend, User = App.User });
+                if(!string.IsNullOrEmpty(TextToSend)){
+                    Messages.Insert(0, new Message() { Text = TextToSend, User = App.User });
                     TextToSend = string.Empty;
                 }
                

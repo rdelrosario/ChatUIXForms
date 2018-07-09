@@ -4,6 +4,8 @@
              x:Class="ChatUIXForms.Views.Cells.OutgoingViewCell">
      <Frame BackgroundColor="Gray"
             Padding="10"
+            Rotation="180"
+            FlowDirection="LeftToRight"
             HasShadow="false"
             Margin="80,10,10,10">
            <Label Text="{Binding Text}"

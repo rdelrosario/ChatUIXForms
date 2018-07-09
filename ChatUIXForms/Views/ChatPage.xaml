@@ -20,7 +20,9 @@
                  ItemTemplate="{StaticResource MessageTemplateSelector}" 
                  ItemsSource="{Binding Messages}" 
                  Margin="0" 
-                 HasUnevenRows="True" 
+                 Rotation="180" 
+                 FlowDirection="RightToLeft"
+                 HasUnevenRows="True" x:Name="ChatList"
                  VerticalOptions="FillAndExpand" 
                  SeparatorColor="Transparent" >
         </ListView>
