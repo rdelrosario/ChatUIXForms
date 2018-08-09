@@ -9,20 +9,41 @@ namespace ChatUIXForms.Views
 {
     public partial class ChatPage : ContentPage
     {
-       // public ICommand ScrollListCommand { get; set; }
         public ChatPage()
         {
             InitializeComponent();
             this.BindingContext = new ChatPageViewModel();
+        }
 
-            //Option for scroll to the last message
-            /*
-            ScrollListCommand = new Command(() =>
+        public void ScrollTap(object sender, System.EventArgs e)
+        {
+            lock (new object())
             {
-                Device.BeginInvokeOnMainThread(() =>
-                  ChatList.ScrollTo((this.BindingContext as ChatPageViewModel).Messages.Last(), ScrollToPosition.End, false)
-              );
-            });*/
+                if (BindingContext != null)
+                {
+                    var vm = BindingContext as ChatPageViewModel;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        while (vm.DelayedMessages.Count > 0)
+                        {
+                            vm.Messages.Insert(0, vm.DelayedMessages.Dequeue());
+                        }
+                        vm.ShowScrollTap = false;
+                        vm.LastMessageVisible = true;
+                        vm.PendingMessageCount = 0;
+                        ChatList?.ScrollToFirst();
+                    });
+
+
+                }
+
+            }
+        }
+       
+        public void OnListTapped(object sender, ItemTappedEventArgs e)
+        {
+            chatInput.UnFocusEntry();
         }
     }
 }

@@ -22,8 +22,7 @@
                  PlaceholderColor="LightGray"
                  Placeholder="Type your message here"
                  Grid.Row="0" 
-                 Grid.Column="0"
-                 Completed="Handle_Completed"/>
+                 Grid.Column="0" />
         <Label Text="Send"
                Grid.Row="0"
                Grid.Column="1"
